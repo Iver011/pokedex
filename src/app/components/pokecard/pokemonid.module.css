@@ -1,0 +1,12 @@
+.id{
+    width: 39px;
+height: 21px;
+font-size: 14px;
+font-weight: 600;
+line-height: 21px;
+letter-spacing: 0em;
+text-align: left;
+color: var(--clr-gray);
+margin-left: 319px;
+margin-top: 8px;
+}

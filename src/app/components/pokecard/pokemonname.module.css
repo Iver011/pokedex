@@ -1,0 +1,12 @@
+.pokemon-name{
+    color: var(--title);
+    font-weight: 600;
+    text-transform: capitalize;
+    font-size: 32px;
+    line-height: 48px;
+    width: 121px;
+    height: 48px;
+    margin-top: 34px;
+    margin-left: 24px;
+}
+

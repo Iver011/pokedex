@@ -1,0 +1,23 @@
+.pokemon-list{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 50px;
+    margin-bottom: 40px;
+    gap: 100px;
+  }
+  
+  .pokecard{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+ .pokemain{
+    text-align: center;
+ }
+ .map{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+ }

@@ -1,0 +1,16 @@
+.container{
+    
+    overflow: hidden;
+    width: 1200px;
+    height:800px;
+    
+  
+}
+.mapImage{
+    
+  width: 1200px;
+  height: 800px;
+}
+#galar{
+    width: 600px;
+}
