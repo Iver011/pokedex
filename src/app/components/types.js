@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-
-
+import style from "./types.module.css"
+import st from "./pokemonmuestra.module.css"
 
 function Types({tipo}){
     const [typeData,setTypeData] = useState("")
@@ -22,42 +22,46 @@ function Types({tipo}){
     }
     
     return(
-        <>
-            <div>
-            {typeData.name}
+        <div className={style.types} >
+            <div className={style.title} >
+            <h3 className={st[typeData.name]}>{typeData.name}</h3>
             </div>
-            <div>
-            Recibe doble daño de:
-            {typeData.damage_relations.double_damage_from.map((type)=>(type.name)).join(",  ")}
+            <div className={style.damage}>
+            <div className={style.value}>
+            <div className={style.text}>Recibe doble daño de:</div>
+            <p>{typeData.damage_relations.double_damage_from.map((type,index)=>(<div key={index} id={style.relations} className={st[type.name]}>{type.name}</div>))}</p>
             </div>
-            <div>
-            Inflinge doble daño a:
-            {typeData.damage_relations.double_damage_to.map((type)=>(type.name)).join(",  ")}
+            <div className={style.value}>
+            <div className={style.text}>Inflinge doble daño a:</div>
+            <p>{typeData.damage_relations.double_damage_to.map((type,index)=>(<div key={index} id={style.relations} className={st[type.name]}>{type.name}</div>))}</p>
             </div>
-            <div>
-            Recibe la mitad de daño de:
-            {typeData.damage_relations.half_damage_from.map((type)=>(type.name)).join(",  ")}
+            <div className={style.value}>
+            <div className={style.text}>Recibe la mitad de daño de:</div>
+            <p>{typeData.damage_relations.half_damage_from.map((type,index)=>(<div key={index} id={style.relations} className={st[type.name]}>{type.name}</div>))}</p>
             </div>
-            <div>
-            Inflinge la mitad de daño a:
-            {typeData.damage_relations.half_damage_to.map((type)=>(type.name)).join(",  ")}
+            <div className={style.value}>
+            <div className={style.text}>Inflinge la mitad de daño a</div> 
+            <p>{typeData.damage_relations.half_damage_to.map((type,index)=>(<div key={index} id={style.relations} className={st[type.name]}>{type.name}</div>))}</p>
             </div>
-            <div>
-            No recibe daño de:
-            {typeData.damage_relations.no_damage_from.map((type)=>(type.name)).join(",  ")}
+            <div className={style.value}>
+            <div className={style.text}>No recibe daño de:</div>
+            <p>{typeData.damage_relations.no_damage_from.map((type,index)=>(<div key={index} id={style.relations} className={st[type.name]}>{type.name}</div>))}</p>
             </div>
-            <div>
-            No hace daño a:
-            {typeData.damage_relations.no_damage_to.map((type)=>(type.name)).join(",  ")}
+            <div className={style.value}>
+            <div className={style.text}>No hace daño a:</div>
+            <p>{typeData.damage_relations.no_damage_to.map((type,index)=>(<div key={index} id={style.relations} className={st[type.name]}>{type.name}</div>))}</p>
             </div>
-
-            <div>
+            </div>
+            <div className={style.moves}>
                 <h3> Movimientos: </h3>
-                {typeData.moves.map((move)=>move.name).join(", ")}
+                <div className={style["moves-list"]}>
+                {typeData.moves.map((move)=>(<div>{move.name}</div>))}
+
+                </div>
             </div>
                  
         
-        </>
+        </div>
     );
 
 }

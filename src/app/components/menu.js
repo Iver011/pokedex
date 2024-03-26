@@ -159,7 +159,10 @@ function Menu({data,setFilteredPokemon,setSelectedType,setTitle,setShowMap,setRe
                 </ul>
               
             </div>
+            <div className={style.search}>
             <Search setFilteredPokemon={setFilteredPokemon} setTitle={setTitle} setSelectedPokemon={setSelectedPokemon} setTypeInfo={setTypeInfo}></Search>
+
+            </div>
             
         </header>
     );
