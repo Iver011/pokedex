@@ -14,7 +14,7 @@
     gap:0.5rem;
     text-align: left;
 }
-.moves{
+.moves.conteiner{
     
     padding: 0.5rem;
     text-transform: capitalize;

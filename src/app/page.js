@@ -9,6 +9,7 @@ import Title from "./components/titulo";
 import Map from "./components/mapa"
 import Versions from "./components/versions";
 import Types from "./components/types";
+import Move from "./components/move";
 export default function Home() {
   const [pokemonData, setPokemonData] = useState([]);
   const [filterPokemon, setFilterPokemon] = useState([]);
@@ -53,6 +54,8 @@ export default function Home() {
 
   return (
     <main className={styles.main}>
+      
+      
       <Menu data={pokemonData} setFilteredPokemon={setFilterPokemon}
       setSelectedType={handleMenuSelect} setTitle={setTitle}
       setShowMap={setShowMap} setRegion={setRegion}
@@ -106,6 +109,7 @@ export default function Home() {
         }
 
       </div>
+      
     </main>
   );
 }

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import style from "./types.module.css"
 import st from "./pokemonmuestra.module.css"
+import Move from "./move";
 
 function Types({tipo}){
     const [typeData,setTypeData] = useState("")
@@ -52,10 +53,13 @@ function Types({tipo}){
             <p>{typeData.damage_relations.no_damage_to.map((type,index)=>(<div key={index} id={style.relations} className={st[type.name]}>{type.name}</div>))}</p>
             </div>
             </div>
-            <div className={style.moves}>
+            <div className={style["moves-conteiner"]}>
                 <h3> Movimientos: </h3>
                 <div className={style["moves-list"]}>
-                {typeData.moves.map((move)=>(<div>{move.name}</div>))}
+                {typeData.moves.map((move)=>(<div className={style.move}>{move.name}
+                <Move move={move.name}></Move>
+                
+                </div>))}
 
                 </div>
             </div>
