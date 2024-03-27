@@ -5,7 +5,7 @@ import Move from "./move";
 
 function Types({tipo}){
     const [typeData,setTypeData] = useState("")
-
+    
 
     useEffect(()=>{
         fetch(`https://pokeapi.co/api/v2/type/${tipo}/`).
@@ -17,7 +17,7 @@ function Types({tipo}){
 
     },[tipo])
 
-   
+    
     if (!typeData) {
         return <div>Cargando...</div>;
     }
@@ -56,8 +56,11 @@ function Types({tipo}){
             <div className={style["moves-conteiner"]}>
                 <h3> Movimientos: </h3>
                 <div className={style["moves-list"]}>
-                {typeData.moves.map((move)=>(<div className={style.move}>{move.name}
-                <Move move={move.name}></Move>
+                {typeData.moves.map((move)=>(<div className={style.move}>
+              <div className={style.description}><Move move={move.name} type={typeData.name}></Move></div>
+                        
+                   
+
                 
                 </div>))}
 
