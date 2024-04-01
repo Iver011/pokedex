@@ -6,31 +6,91 @@ import Search from "./busqueda";
 function Menu({data,setFilteredPokemon,setSelectedType,setTitle,setShowMap,setRegion,setTypeInfo,setByType,setSelectedPokemon}) {
     const [hoveredItem, setHoveredItem] = useState(null);
     
-
-    const filterPokemonByType=(type)=>{
-
-        const filterPokemon = data.filter(
-            (pokemon)=>pokemon.types.some((t) =>t.type.name===type)
-        );
-        setFilteredPokemon(filterPokemon);
-        setSelectedType(type)
-        setTitle(`${type} Pokemon`)
-        setShowMap(false)
-        setTypeInfo(false)
-        
+    const filterPokemonByType = async (type) => {
+        if(type==="All"){ setFilteredPokemon([])
+            setSelectedPokemon(null)
+            setTitle("All Pokemon")} else{
+        try {
+            const res = await fetch(`https://pokeapi.co/api/v2/type/${type}/`);
+            const data = await res.json();
+            const lista = data.pokemon;
+    
+            if (lista && lista.length > 0) {
+                const promises = lista.map(async (pokemonEntry) => {
+                    const response = await fetch(pokemonEntry.pokemon.url);
+                    return response.json();
+                });
+    
+                const pokemons = await Promise.all(promises);
+                setFilteredPokemon(pokemons);
+                setSelectedType(type);
+                setTitle(`${type} Pokemon`);
+                setShowMap(false);
+                setTypeInfo(false);
+                
+            } else {
+                console.error("No se encontraron pokémones para el tipo especificado.");
+            }
+        } catch (error) {
+            console.error("Error al filtrar pokémones por tipo:", error);
+        }
     }
+    };
+        const filterPokemonByGen = async (gen) => {
+            if(gen==="All"){ setFilteredPokemon([])
+                setSelectedPokemon(null)
+                setTitle("All Pokemon")} else{
+            const exceptions={"deoxys":"deoxys-normal",
+                            "wormadam":"wormadam-plant","giratina":"giratina-altered","shaymin":"shaymin-land",
+                            "basculin":"basculin-red-striped","darmanitan":"darmanitan-standard","tornadus":"tornadus-incarnate","thundurus":"thundurus-incarnate","landorus":"landorus-incarnate","keldeo":"keldeo-ordinary","meloetta":"meloetta-aria"
+                            ,"meowstic":"meowstic-male","aegislash":"aegislash-shield","pumpkaboo":"pumpkaboo-average","zygarde":"zygarde-50","gourgeist":"gourgeist-average"
+                            ,"oricorio":"oricorio-baile","wishiwashi":"wishiwashi-solo","lycanroc":"lycanroc-midday","minior":"minior-red-meteor","mimikyu":"mimikyu-disguised"
+                            ,"eiscue":"eiscue-ice","indeedee":"indeedee-male","morpeko":"morpeko-full-belly","enamorus":"enamorus-incarnate","toxtricity":"toxtricity-amped","urshifu":"urshifu-single-strike","basculegion":"basculegion-male"}
+            try {
+                const res = await fetch(`https://pokeapi.co/api/v2/generation/${gen}/`);
+                const data = await res.json();
+                const lista = data.pokemon_species;
+        
+                console.log("1",lista)
+                if (lista && lista.length > 0) {
+                    const promises = lista.map(async (pokemonEntry) => {
+                        let name=pokemonEntry.name
+                        if(name in exceptions){
+                            name=exceptions[name]
+                        }
+                        const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`);
+                        return response.json();
+                    });
+                    
+                    const pokemons = await Promise.all(promises);
+                    console.log(gen,pokemons)
+                    setFilteredPokemon(pokemons);
+                    setSelectedType(null)
+                    
+                    setTitle(`${gen} Generation`);
+                    setShowMap(false);
+                    setTypeInfo(false);
+                    
+                } else {
+                    console.error("No se encontraron pokémones para el tipo especificado.");
+                }
+            } catch (error) {
+                console.error("Error al filtrar pokémones por tipo:", error);
+            
+        }}
+        };
      
-    const filterPokemonByGen=(i,f,gen)=>{
-        const filterPokemon=data.filter(
-            (pokemon)=>(pokemon.id>=i && pokemon.id<f) 
-        )
-        setFilteredPokemon(filterPokemon)
-        setSelectedType(null)
-        setTitle(gen)
-        setShowMap(false)
-        setTypeInfo(false)
-        
-    }
+    //const filterPokemonByGen=(i,f,gen)=>{
+    //    const filterPokemon=data.filter(
+    //        (pokemon)=>(pokemon.id>=i && pokemon.id<f) 
+    //    )
+    //    setFilteredPokemon(filterPokemon)
+    //    setSelectedType(null)
+    //    setTitle(gen)
+    //    setShowMap(false)
+    //    setTypeInfo(false)
+    //    
+    //}
     const handleItemHover = (itemName) => {
         setHoveredItem(itemName);
        
@@ -90,16 +150,16 @@ function Menu({data,setFilteredPokemon,setSelectedType,setTitle,setShowMap,setRe
                         onMouseLeave={handleItemLeave}>
                         GENERATION<span className={hoveredItem === "GENERATION" ? style.up : style.down} ></span>
                         <ul className={style.submenu}>
-                            <li onClick={()=>filterPokemonByGen(1,1009,"ALL POKEMON")}>All</li>
-                            <li onClick={()=>filterPokemonByGen(1,152, "GENERATION 1")}>Primera Generacion</li>
-                            <li onClick={()=>filterPokemonByGen(152,252, "GENERATION 2")}>Segunda Generacion</li>
-                            <li onClick={()=>filterPokemonByGen(252,387, "GENERATION 3")}>Tercera Generacion</li>
-                            <li onClick={()=>filterPokemonByGen(387,494, "GENERATION 4")}>Cuarta Generacion</li>
-                            <li onClick={()=>filterPokemonByGen(494,650, "GENERATION 5")}>Quinta Generacion</li>
-                            <li onClick={()=>filterPokemonByGen(650,722,"GENERATION 6")}>Sexta Generacion</li>
-                            <li onClick={()=>filterPokemonByGen(722,810,"GENERATION 7")}>Septima Generacion</li>
-                            <li onClick={()=>filterPokemonByGen(810,906, "GENERATION 8")}>Octava Generacion</li>
-                            <li onClick={()=>filterPokemonByGen(906,1009,"GENERATION 9")}>Novena Generacion</li>
+                            <li onClick={()=>filterPokemonByGen("All")}>All</li>
+                            <li onClick={()=>filterPokemonByGen(1)}>Primera Generacion</li>
+                            <li onClick={()=>filterPokemonByGen(2)}>Segunda Generacion</li>
+                            <li onClick={()=>filterPokemonByGen(3)}>Tercera Generacion</li>
+                            <li onClick={()=>filterPokemonByGen(4)}>Cuarta Generacion</li>
+                            <li onClick={()=>filterPokemonByGen(5)}>Quinta Generacion</li>
+                            <li onClick={()=>filterPokemonByGen(6)}>Sexta Generacion</li>
+                            <li onClick={()=>filterPokemonByGen(7)}>Septima Generacion</li>
+                            <li onClick={()=>filterPokemonByGen(8)}>Octava Generacion</li>
+                            <li onClick={()=>filterPokemonByGen(9)}>Novena Generacion</li>
                         </ul>
                     </li>
                     
@@ -132,7 +192,7 @@ function Menu({data,setFilteredPokemon,setSelectedType,setTitle,setShowMap,setRe
                     <li className={style["option"]}
                         onMouseEnter={() => handleItemHover("ABILITIES")}
                         onMouseLeave={handleItemLeave}>
-                        ABILITIES<span className={hoveredItem === "ABILITIES" ? style.up : style.down} ></span>
+                        ITEMS<span className={hoveredItem === "ABILITIES" ? style.up : style.down} ></span>
                       
                       
                     </li>

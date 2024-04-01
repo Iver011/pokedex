@@ -1,25 +1,19 @@
 import { useEffect, useState } from "react";
 import style from "./move.module.css"
-import st from "./pokemonmuestra.module.css"
+import st from "../pokemonmuestra.module.css"
+import useMove from "../hooks/useMove";
 
 function Move({move,type}){
-    const [moveData,setMoveData]=useState("")
+    
     const [active,setActive]=useState(false)
-    useEffect(()=>{
-        fetch(`https://pokeapi.co/api/v2/move/${move}/`).
-        then(res=>res.json()).
-        then(data=>{
-            setMoveData(data)
-        })
-    },[type])
-
+   const moveData=useMove(move);
     const activate=()=>{
         setActive(!active)
     }
     if (!moveData) {
         return <div>Cargando...</div>;
     }
-    console.log(type)
+   
     return(
         <div className={style.conteiner}>
             <div className={style.name} onClick={activate}>{moveData.name}</div>

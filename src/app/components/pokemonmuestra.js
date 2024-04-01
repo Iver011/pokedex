@@ -1,8 +1,8 @@
 
 import { useState } from "react";
 import style from "./pokemonmuestra.module.css"
-import PokeCard from "./pokecard/pokemoncard";
-function PokeMs({data,onSelectPokemon,setTitle}){
+
+function PokeMs({data,onSelectPokemon}){
     const handleClick = () => {
         onSelectPokemon(data); // Llama a la función onSelectPokemon y pasa la información del Pokémon
         

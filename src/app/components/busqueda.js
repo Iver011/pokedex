@@ -4,7 +4,7 @@ function Search({setFilteredPokemon,setTitle,setSelectedPokemon,setTypeInfo}){
     const [pokemonId,setPokemonId] =useState('')
     
     
-    const buscarPokemon=(name)=>{ 
+    const buscarPokemon=()=>{ 
     fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonId}`).
     then(res=>res.json()).
     then(data=>{

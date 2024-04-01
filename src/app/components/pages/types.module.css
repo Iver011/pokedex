@@ -1,0 +1,234 @@
+.title{
+    text-transform: uppercase;
+    margin-top:1.5rem;
+    width: 150px;
+    height: 30px;   
+}
+.value{
+    text-transform: capitalize;
+    display: flex;
+    padding: 0.25rem;
+}
+.damage{
+    padding: 2rem;
+    gap:0.5rem;
+    text-align: left;
+    
+    
+  
+}
+.moves.conteiner{
+    
+    padding: 0.5rem;
+    text-transform: capitalize;
+}
+.types{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+   
+}
+.types img{
+    width: 5rem;
+    height: 5rem;
+}
+
+.value p{
+    margin-left: 100px;
+    display: flex;
+    gap:1rem;
+    padding: 0.4rem;
+    align-items: center;
+    
+    
+}
+.text{
+    width: 15.5rem;
+    padding: 0.5rem;
+}
+
+.title h3{
+    padding: 0.6rem;
+    border-radius: 10px;
+}
+#relations{
+    padding: 0.25rem 0.75rem;
+    border-radius: 5px;
+    gap: 0.5rem;
+}
+.moves-list{
+    padding: 2rem;
+    gap: 1rem 2rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    text-align: left;
+    
+}
+.move{
+    text-transform: capitalize
+}
+
+.header{
+    display: flex;
+}
+
+.bug{
+    background-image: url("/types/bug.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    z-index: -1;
+    
+}
+.normal{
+    background-image: url("/types/normal.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    z-index: -1;
+    
+}
+.fighting{
+    background-image: url("/types/fighting.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    z-index: -1;
+}
+.flying{
+    background-image: url("/types/flying.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    z-index: -1;
+}
+.dragon{
+    
+        background-image: url("/types/dragon.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        z-index: -1;
+    
+}
+.ice{
+    
+    background-image: url("/types/ice.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    z-index: -1;
+
+}
+.psychic{
+    
+    background-image: url("/types/psychic.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    z-index: -1;
+
+}
+.steel{
+    
+    background-image: url("/types/steel.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    z-index: -1;
+
+}
+.rock{
+    
+    background-image: url("/types/rock.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    z-index: -1;
+
+}
+.water{
+    
+    background-image: url("/types/water.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    z-index: -1;
+
+}
+.ground{
+    
+    background-image: url("/types/ground.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    z-index: -1;
+
+}
+
+.electric{
+    
+    background-image: url("/types/electric.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    z-index: -1;
+
+}
+.poison{
+    
+    background-image: url("/types/poison.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    z-index: -1;
+
+}
+.grass{
+    
+    background-image: url("/types/grass.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    z-index: -1;
+
+}
+.ghost{
+    
+    background-image: url("/types/ghost.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    z-index: -1;
+
+}
+.fire{
+    
+    background-image: url("/types/fire.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    z-index: -1;
+
+}
+.fairy{
+    
+    background-image: url("/types/fairy.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    z-index: -1;
+
+}
+
+.dark{
+    
+    background-image: url("/types/dark.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    z-index: -1;
+
+}
+

@@ -1,33 +1,24 @@
 import { useEffect, useState } from "react";
 import style from "./types.module.css"
-import st from "./pokemonmuestra.module.css"
+import st from "../pokemonmuestra.module.css"
 import Move from "./move";
+import useType from "../hooks/useType";
 
 function Types({tipo}){
-    const [typeData,setTypeData] = useState("")
-    
-
-    useEffect(()=>{
-        fetch(`https://pokeapi.co/api/v2/type/${tipo}/`).
-        then(res=>res.json()).
-        then(data=>{
-            setTypeData(data)
-        })
-
-
-    },[tipo])
-
+    const typeData=useType(tipo)
     
     if (!typeData) {
         return <div>Cargando...</div>;
     }
-    
+    console.log(typeData)
     return(
         <div className={style.types} >
             <div className={style.title} >
+           
             <h3 className={st[typeData.name]}>{typeData.name}</h3>
+            
             </div>
-            <div className={style.damage}>
+            <div className={`${style.damage} ${style[typeData.name]}`}>
             <div className={style.value}>
             <div className={style.text}>Recibe doble daño de:</div>
             <p>{typeData.damage_relations.double_damage_from.map((type,index)=>(<div key={index} id={style.relations} className={st[type.name]}>{type.name}</div>))}</p>
